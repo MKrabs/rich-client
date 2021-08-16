@@ -1,0 +1,9 @@
+<div *ngIf="items">
+    <input type="button" (click)="createNewTodoNote()" value="+">
+    <div *ngFor="let item of items">
+        <h2>{{item.title}}</h2>
+        <p>Done:</p>
+        <input type="checkbox" disabled [checked]="item.done">
+        <input type="button" (click)="showDetails(item.id)" value="Details">
+    </div>
+</div>

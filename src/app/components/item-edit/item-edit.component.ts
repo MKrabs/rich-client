@@ -16,7 +16,7 @@ export class ItemEditComponent implements OnInit {
                 private readonly router: Router,
                 readonly activatedRoute: ActivatedRoute) {
         this.id = +activatedRoute.snapshot.paramMap.get('id');
-        this.item = { id: this.id, title: '', description: '', done: false }
+        this.item = { id: this.id, title: '', description: '', done: false };
     }
 
     async ngOnInit() {

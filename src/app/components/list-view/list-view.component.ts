@@ -23,7 +23,6 @@ export class ListViewComponent implements OnInit {
     }
 
     async createNewTodoNote() {
-        const id = this.todoService.nextFreeId();
-        await this.router.navigate(['item-edit', id]);
+        await this.router.navigate(['item-edit']);
     }
 }

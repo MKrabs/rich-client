@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TodoService {
 
+    static readonly baseUrl = 'http://localhost:8080/todo';
+
     private items: Map<number, Todo> = new Map([
         [1, {
             id: 1,
@@ -32,22 +34,15 @@ export class TodoService {
     }
 
     getAll(): Promise<Todo[]> {
-        return Promise.resolve(Array.from(this.items.values()));
+        return this.httpClient.get<Todo[]>(TodoService.baseUrl).toPromise();
     }
 
     findById(id: number): Promise<Todo> {
-        return Promise.resolve(this.copy(this.items.get(id)));
+        return this.httpClient.get<Todo>(`${TodoService.baseUrl}/${id}`).toPromise();
     }
 
     saveItem(item: Todo): Promise<Todo> {
-        this.items.set(item.id, item);
-        return Promise.resolve(this.copy(item));
-    }
-
-    nextFreeId(): number {
-        return Array.from(this.items.values())
-            .map((item) => item.id)
-            .reduce((acc, value) => acc < value ? value : acc) + 1;
+        return this.httpClient.post<Todo>(TodoService.baseUrl, item).toPromise();
     }
 
     private copy(item: Todo): Todo {

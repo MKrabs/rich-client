@@ -22,6 +22,10 @@ const routes: Routes = [
     {
         path: 'item-edit/:id',
         component: ItemEditComponent,
+    },
+    {
+        path: 'item-edit',
+        component: ItemEditComponent,
     }
 ];
 

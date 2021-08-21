@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../model/todo';
 import { TodoService } from '../../services/todo.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,11 +20,13 @@ export class ItemEditComponent implements OnInit {
     }
 
     async ngOnInit() {
-        this.item = await this.todoService.findById(this.id) || this.item;
+        if (this.id) {
+            this.item = await this.todoService.findById(this.id) || this.item;
+        }
     }
 
     async onSubmit() {
-        await this.todoService.saveItem(this.item);
+        this.id = (await this.todoService.saveItem(this.item)).id;
         await this.navigateToListView();
     }
 

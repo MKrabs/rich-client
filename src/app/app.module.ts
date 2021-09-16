@@ -3,24 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemViewComponent } from './components/item-view/item-view.component';
 import { FormsModule } from '@angular/forms';
-import { ItemEditComponent } from './components/item-edit/item-edit.component';
-import { ListViewComponent } from './components/list-view/list-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InputFieldGroupComponent } from './components/molecules/input-field-group/input-field-group.component';
+import { ItemViewComponent } from './components/pages/item-view/item-view.component';
+import { ItemEditComponent } from './components/pages/item-edit/item-edit.component';
+import { ListViewItemComponent } from './components/organisms/list-view-item/list-view-item.component';
+import { ButtonComponent } from './components/atoms/button/button.component';
+import { InputFieldComponent } from './components/atoms/input-field/input-field.component';
+import { ListViewComponent } from './components/pages/list-view/list-view.component';
+import { TodoService } from './services/todo.service';
+import { InputCheckGroupComponent } from './components/molecules/input-check-group/input-check-group.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ItemViewComponent,
         ItemEditComponent,
-        ListViewComponent
+        ListViewComponent,
+        ListViewItemComponent,
+        ButtonComponent,
+        InputFieldComponent,
+        InputFieldGroupComponent,
+        InputCheckGroupComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

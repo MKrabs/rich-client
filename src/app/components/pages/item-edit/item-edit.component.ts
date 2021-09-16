@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../model/todo';
-import { TodoService } from '../../services/todo.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Todo } from '../../../model/todo';
+import { TodoService } from '../../../services/todo.service';
 
 @Component({
     selector: 'app-todo-edit',
@@ -14,9 +14,9 @@ export class ItemEditComponent implements OnInit {
 
     constructor(private readonly todoService: TodoService,
                 private readonly router: Router,
-                readonly activatedRoute: ActivatedRoute) {
+                activatedRoute: ActivatedRoute) {
         this.id = +activatedRoute.snapshot.paramMap.get('id');
-        this.item = { id: this.id, title: '', description: '', done: false };
+        this.item = { id: this.id, title: '', done: false };
     }
 
     async ngOnInit() {

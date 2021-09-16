@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Todo } from '../../model/todo';
-import { TodoService } from '../../services/todo.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Todo } from '../../../model/todo';
+import { TodoService } from '../../../services/todo.service';
 
 @Component({
     selector: 'app-todo-view',
@@ -14,7 +14,7 @@ export class ItemViewComponent implements OnInit {
 
     constructor(private readonly todoService: TodoService,
                 private readonly router: Router,
-                readonly activatedRoute: ActivatedRoute) {
+                activatedRoute: ActivatedRoute) {
         this.id = +activatedRoute.snapshot.paramMap.get('id');
     }
 

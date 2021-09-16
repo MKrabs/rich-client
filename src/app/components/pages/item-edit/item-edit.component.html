@@ -1,0 +1,5 @@
+<div *ngIf="item" class="container">
+    <h2>Todo:</h2>
+    <app-input-field-group inputId="edit-title" label="Title:" [(text)]="item.title"></app-input-field-group>
+    <app-button label="Save" (clicked)="onSubmit()"></app-button>
+</div>

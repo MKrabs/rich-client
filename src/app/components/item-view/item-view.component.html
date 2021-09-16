@@ -1,8 +1,0 @@
-<div *ngIf="item">
-    <h1>{{item.title}}</h1>
-    <p>{{item.description}}</p>
-    <input (change)="onCheckboxChange()" type="checkbox" [(ngModel)]="item.done">
-    <input type="button" (click)="onSave()" value="Save">
-    <a (click)="navigateToListView()">Back</a>
-    <input type="button" (click)="navigateToEditScreen()" value="Edit">
-</div>

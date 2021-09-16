@@ -1,0 +1,8 @@
+<div *ngIf="items" class="container">
+    <h2 class="mb-3">Todo's:</h2>
+    <div *ngFor="let item of items">
+        <app-list-view-item [item]="item" (showDetails)="showDetails($event)"></app-list-view-item>
+        <div class=""></div>
+    </div>
+    <app-button label="+" (clicked)="createNewTodoNote()"></app-button>
+</div>

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Todo } from '../model/todo';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
@@ -13,19 +13,16 @@ export class TodoService {
         [1, {
             id: 1,
             title: 'item1',
-            description: 'Need to do something',
             done: false,
         }],
         [2, {
             id: 2,
             title: 'item2',
-            description: 'Need to do something',
             done: true,
         }],
         [3, {
             id: 3,
             title: 'item3',
-            description: 'Need to do something',
             done: false,
         }]
     ]);

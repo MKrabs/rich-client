@@ -37,8 +37,11 @@ export class TodoService {
     }
 
     saveItem(item: Todo): Promise<Todo> {
-        const id = this.items.size + 1;
-        item.id = id;
+        let id = item.id;
+        if (!id) {
+            id = this.items.size + 1;
+            item.id = id;
+        }
 
         this.items.set(id, item);
 

@@ -7,8 +7,6 @@ import { Injectable } from '@angular/core';
 })
 export class TodoService {
 
-    static readonly baseUrl = 'http://localhost:8080/todo';
-
     private items: Map<number, Todo> = new Map([
         [1, {
             id: 1,
@@ -31,15 +29,20 @@ export class TodoService {
     }
 
     getAll(): Promise<Todo[]> {
-        return this.httpClient.get<Todo[]>(TodoService.baseUrl).toPromise();
+        return Promise.resolve(Array.from(this.items.values()));
     }
 
     findById(id: number): Promise<Todo> {
-        return this.httpClient.get<Todo>(`${TodoService.baseUrl}/${id}`).toPromise();
+        return Promise.resolve(this.items.get(id));
     }
 
     saveItem(item: Todo): Promise<Todo> {
-        return this.httpClient.post<Todo>(TodoService.baseUrl, item).toPromise();
+        const id = this.items.size + 1;
+        item.id = id;
+
+        this.items.set(id, item);
+
+        return Promise.resolve(this.items.get(id));
     }
 
     private copy(item: Todo): Todo {

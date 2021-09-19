@@ -1,5 +1,0 @@
-<div class="list-item-container">
-    <h2>{{item.title}}</h2>
-    <app-input-check-group [inputId]="item.id + 'check'" [disabled]="true" label="Done" [(checked)]="item.done"></app-input-check-group>
-    <app-button type="secondary" label="Details" (clicked)="showDetails.emit(item.id)"></app-button>
-</div>

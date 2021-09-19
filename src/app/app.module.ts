@@ -12,7 +12,6 @@ import { ListViewItemComponent } from './components/organisms/list-view-item/lis
 import { ButtonComponent } from './components/atoms/button/button.component';
 import { InputFieldComponent } from './components/atoms/input-field/input-field.component';
 import { ListViewComponent } from './components/pages/list-view/list-view.component';
-import { TodoService } from './services/todo.service';
 import { InputCheckGroupComponent } from './components/molecules/input-check-group/input-check-group.component';
 
 @NgModule({

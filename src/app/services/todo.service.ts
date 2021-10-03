@@ -47,11 +47,4 @@ export class TodoService {
 
         return Promise.resolve(this.items.get(id));
     }
-
-    private copy(item: Todo): Todo {
-        if (!item) {
-            return item;
-        }
-        return JSON.parse(JSON.stringify(item));
-    }
 }

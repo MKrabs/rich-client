@@ -4,7 +4,7 @@ import { Todo } from '../model/todo';
 
 export const selectTodos = createSelector(
     (state: AppState) => state.todos,
-    (todos: Array<Todo>) => todos,
+    (todos: Map<number, Todo>) => Array.from(todos.values()),
 );
 
 export const selectTodo = (todoId: number) => createSelector(

@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemViewComponent } from './components/pages/item-view/item-view.component';
 import { ItemEditComponent } from './components/pages/item-edit/item-edit.component';
 import { ListViewComponent } from './components/pages/list-view/list-view.component';
+import { StoreModule } from '@ngrx/store';
+import { todosReducer } from './state/todo.reducer';
 
 @NgModule({
     declarations: [
@@ -21,6 +23,7 @@ import { ListViewComponent } from './components/pages/list-view/list-view.compon
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
+        StoreModule.forRoot({ todos: todosReducer })
     ],
     providers: [],
     bootstrap: [AppComponent]

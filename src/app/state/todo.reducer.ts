@@ -1,48 +1,22 @@
 import { Todo } from '../model/todo';
 import { createReducer, on } from '@ngrx/store';
-import { addTodo, toggleTodo, updateTodo } from './todo.actions';
+import { loadTodosSuccess, saveTodo } from './todo.actions';
 
-export const initialState: ReadonlyMap<number, Todo> = new Map([
-    [0, {
-        id: 0,
-        title: 'item1',
-        done: false,
-    }],
-    [1, {
-        id: 1,
-        title: 'item2',
-        done: true,
-    }],
-    [2, {
-        id: 2,
-        title: 'item3',
-        done: false,
-    }]
-]);
+export const initialState: ReadonlyMap<number, Todo> = new Map([]);
 
 export const todosReducer = createReducer(
     initialState,
-    on(addTodo, addTodoReducer),
-    on(toggleTodo, toggleTodoReducer),
-    on(updateTodo, updateTodoReducer),
+    on(loadTodosSuccess, loadTodoReducer),
+    on(saveTodo, saveTodoReducer),
 );
 
-function addTodoReducer(state: ReadonlyMap<number, Todo>, { todo }: { todo: Todo }): Map<number, Todo> {
-    const newTodo = {
-        ...todo,
-        id: state.size
-    };
-
-    return new Map([...state, [newTodo.id, newTodo]]);
+function loadTodoReducer(state: ReadonlyMap<number, Todo>, { todos }: { todos: Todo[] }): Map<number, Todo> {
+    return todos.reduce((map: Map<number, Todo>, todo: Todo) => {
+        map.set(todo.id, todo);
+        return map;
+    }, new Map());
 }
 
-function toggleTodoReducer(state: ReadonlyMap<number, Todo>, { todoId }: { todoId: number }): Map<number, Todo> {
-    const todo = state.get(todoId);
-    todo.done = !todo.done;
-
-    return new Map([...state, [todo.id, todo]]);
-}
-
-function updateTodoReducer(state: ReadonlyMap<number, Todo>, { todo }: { todo: Todo }): Map<number, Todo> {
+function saveTodoReducer(state: ReadonlyMap<number, Todo>, { todo }: { todo: Todo }): Map<number, Todo> {
     return new Map([...state, [todo.id, todo]]);
 }

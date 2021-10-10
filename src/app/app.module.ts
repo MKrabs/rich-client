@@ -15,6 +15,8 @@ import { ListViewComponent } from './components/pages/list-view/list-view.compon
 import { InputCheckGroupComponent } from './components/molecules/input-check-group/input-check-group.component';
 import { StoreModule } from '@ngrx/store';
 import { todosReducer } from './state/todo.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffects } from './state/todo.effects';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,8 @@ import { todosReducer } from './state/todo.reducer';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        StoreModule.forRoot({ todos: todosReducer })
+        StoreModule.forRoot({ todos: todosReducer }),
+        EffectsModule.forRoot([TodoEffects]),
     ],
     providers: [],
     bootstrap: [AppComponent]

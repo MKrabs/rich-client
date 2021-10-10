@@ -3,8 +3,12 @@ import { AppState } from './app.state';
 import { Todo } from '../model/todo';
 
 export const selectTodos = createSelector(
-    (state: AppState) => state.todos,
-    (todos: Map<number, Todo>) => Array.from(todos.values()),
+    (state: AppState) => {
+        return state.todos;
+    },
+    (todos: Map<number, Todo>) => {
+        return Array.from(todos.values());
+    },
 );
 
 export const selectTodo = (todoId: number) => createSelector(

@@ -1,50 +1,27 @@
 import { Todo } from '../model/todo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TodoService {
 
-    private items: Map<number, Todo> = new Map([
-        [1, {
-            id: 1,
-            title: 'item1',
-            done: false,
-        }],
-        [2, {
-            id: 2,
-            title: 'item2',
-            done: true,
-        }],
-        [3, {
-            id: 3,
-            title: 'item3',
-            done: false,
-        }]
-    ]);
+    private readonly url = 'http://localhost:8080/todo';
 
     constructor(private readonly httpClient: HttpClient) {
     }
 
     getAll(): Promise<Todo[]> {
-        return Promise.resolve(Array.from(this.items.values()));
+        return firstValueFrom(this.httpClient.get<Todo[]>(this.url));
     }
 
     findById(id: number): Promise<Todo> {
-        return Promise.resolve(this.items.get(id));
+        return firstValueFrom(this.httpClient.get<Todo>(`${this.url}/${id}`));
     }
 
     saveItem(item: Todo): Promise<Todo> {
-        let id = item.id;
-        if (!id) {
-            id = this.items.size + 1;
-            item.id = id;
-        }
-
-        this.items.set(id, item);
-
-        return Promise.resolve(this.items.get(id));
+        return firstValueFrom(this.httpClient.post<Todo>(this.url, item));
     }
 }

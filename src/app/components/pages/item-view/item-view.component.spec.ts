@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ItemViewComponent } from './item-view.component';
 
-describe('TodoViewComponent', () => {
+describe('ItemViewComponent', () => {
   let component: ItemViewComponent;
   let fixture: ComponentFixture<ItemViewComponent>;
 

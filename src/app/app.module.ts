@@ -13,8 +13,6 @@ import { ButtonComponent } from './components/atoms/button/button.component';
 import { InputFieldComponent } from './components/atoms/input-field/input-field.component';
 import { ListViewComponent } from './components/pages/list-view/list-view.component';
 import { InputCheckGroupComponent } from './components/molecules/input-check-group/input-check-group.component';
-import { StoreModule } from '@ngrx/store';
-import { todosReducer } from './state/todo.reducer';
 
 @NgModule({
     declarations: [
@@ -33,7 +31,6 @@ import { todosReducer } from './state/todo.reducer';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        StoreModule.forRoot({ todos: todosReducer })
     ],
     providers: [],
     bootstrap: [AppComponent]
